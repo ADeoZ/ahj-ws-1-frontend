@@ -1,27 +1,32 @@
-const ws = new WebSocket('ws://localhost:7070/ws');
+import Login from './Login';
 
-ws.addEventListener('open', () => {
-  console.log('connected');
-  ws.send('hello');
-});
+const login = new Login(document.querySelector('.chat_login'), 'ws://localhost:7070/ws');
+login.connect();
 
-ws.addEventListener('message', (evt) => {
-  console.log(evt.data);
-});
+// const ws = new WebSocket('ws://localhost:7070/ws');
 
-ws.addEventListener('close', (evt) => {
-  console.log('connection closed', evt);
-});
+// ws.addEventListener('open', () => {
+//   console.log('connected');
+//   ws.send('hello');
+// });
 
-ws.addEventListener('error', () => {
-  console.log('error');
-});
+// ws.addEventListener('message', (evt) => {
+//   console.log(evt.data);
+// });
 
-setTimeout(() => {
-  try {
-    ws.send('How are you?');
-  } catch (e) {
-    console.log('err');
-    console.log(e);
-  }
-}, 3000);
+// ws.addEventListener('close', (evt) => {
+//   console.log('connection closed', evt);
+// });
+
+// ws.addEventListener('error', () => {
+//   console.log('error');
+// });
+
+// setTimeout(() => {
+//   try {
+//     ws.send('How are you?');
+//   } catch (e) {
+//     console.log('err');
+//     console.log(e);
+//   }
+// }, 3000);
